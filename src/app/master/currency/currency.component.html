@@ -1,3 +1,5 @@
-<p>
-  currency works!
-</p>
+<p-dataTable [value]="transactions" [paginator]="true" [rows]="2" [pageLinks]="1" [rowsPerPageOptions]="[5,10,20]">
+  <p-column field="date" header="Date" [filter]="true" [sortable]="true"></p-column>
+  <p-column field="label" header="Label"></p-column>
+  <p-column field="amount" header="Amount"></p-column>
+</p-dataTable>
