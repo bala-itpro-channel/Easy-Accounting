@@ -25,6 +25,26 @@ export class CurrencyComponent implements OnInit {
         date: new Date(2017, 3, 27, 15, 43, 10),
         label: 'First transaction',
         amount: 130
+      },
+      {
+        date: new Date(2017, 7, 3, 9, 35, 0),
+        label: 'Second transaction',
+        amount: 130
+      },
+      {
+        date: new Date(2017, 3, 27, 15, 43, 10),
+        label: 'First transaction',
+        amount: 130
+      },
+      {
+        date: new Date(2017, 7, 3, 9, 35, 0),
+        label: 'Second transaction',
+        amount: 130
+      },
+      {
+        date: new Date(2017, 3, 27, 15, 43, 10),
+        label: 'First transaction',
+        amount: 130
       }
     ];
 
