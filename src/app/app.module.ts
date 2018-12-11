@@ -10,6 +10,10 @@ import { CurrencyComponent } from './master/currency/currency.component';
 import { LocationComponent } from './master/location/location.component';
 import { HomeComponent } from './home/home.component';
 import { DataTableModule } from 'primeng/primeng';
+import { DemoMaterialModule } from './material-module';
+import { CurrencyDialogComponent } from './master/currency/dialog/currency-dialog/currency-dialog.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,15 +21,19 @@ import { DataTableModule } from 'primeng/primeng';
     JournalComponent,
     CurrencyComponent,
     LocationComponent,
-    HomeComponent
+    HomeComponent,
+    CurrencyDialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DataTableModule
+    DataTableModule,
+    DemoMaterialModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CurrencyDialogComponent]
 })
 export class AppModule { }

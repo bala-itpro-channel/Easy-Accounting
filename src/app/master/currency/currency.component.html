@@ -1,12 +1,9 @@
-<p-dataTable [value]="currencies" [paginator]="true" [rows]="5" 
-  [pageLinks]="5" [rowsPerPageOptions]="[5, 10, 15]">
-  <p-column field="id" header="Id" [sortable]="true">
-    <ng-template let-col let-currency="rowData" pTemplate="body">
-      <div class='center-text'>
-          {{currency[col.field]}}
-      </div>
-    </ng-template>
-  </p-column>
+<p-dataTable [value]="currencies" [paginator]="true" [rows]="5" selectionMode="single" 
+  [pageLinks]="5" [rowsPerPageOptions]="[5, 10, 15]" [responsive]="true" 
+  (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency"
+  >
+  <p-header>Currency List</p-header>
+  <p-column field="id" header="Id" [sortable]="true"></p-column>
   <p-column field="code" header="Currency Code" [sortable]="true"></p-column>
   <p-column field="name" header="Currency Name" [sortable]="true"></p-column>
   <p-column field="base" header="Base Currency" [sortable]="true"></p-column>

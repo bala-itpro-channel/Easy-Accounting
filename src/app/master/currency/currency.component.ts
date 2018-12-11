@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CurrencyDialogComponent } from './dialog/currency-dialog/currency-dialog.component';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrencyComponent implements OnInit {
   currencies: Array<any> = [];
-  constructor() { }
+  selectedCurrency: any;
+
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
     this.currencies = [      
@@ -54,6 +57,20 @@ export class CurrencyComponent implements OnInit {
         base: false
       }
     ];
+  }
+
+  onRowSelect(event) {
+    console.log('Before dialog');
+    console.log(event);
+    const dialogRef = this.dialog.open(CurrencyDialogComponent, {
+      width: '250px',
+      data: this.selectedCurrency
+    });
+    console.log('After dialog');
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
   }
 
 }

@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Add/Eit/Delete Currency</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="currency.name" placeholder="What's your name?">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="currency">Delete</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="currency">Save</button>
+</mat-dialog-actions>
+{{currency | json}}
