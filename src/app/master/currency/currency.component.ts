@@ -6,48 +6,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-  transactions: Array<any> = [];
+  currencies: Array<any> = [];
   constructor() { }
 
   ngOnInit() {
-    this.transactions = [
+    this.currencies = [      
       {
-        date: new Date(2017, 10, 10, 13, 10, 15),
-        label: 'Third transaction',
-        amount: 130
+        id: 1,
+        code: 'SCR',
+        name: 'Seychelles Rupees',
+        base: true
       },
       {
-        date: new Date(2017, 7, 3, 9, 35, 0),
-        label: 'Second transaction',
-        amount: 130
+        id: 2,
+        code: 'USD',
+        name: 'US Dollar',
+        base: false
       },
       {
-        date: new Date(2017, 3, 27, 15, 43, 10),
-        label: 'First transaction',
-        amount: 130
+        id: 3,
+        code: 'MRU',
+        name: 'Mauritanian ouguiya',
+        base: false
       },
       {
-        date: new Date(2017, 7, 3, 9, 35, 0),
-        label: 'Second transaction',
-        amount: 130
+        id: 4,
+        code: 'GBP',
+        name: 'Pound sterling',
+        base: false
       },
       {
-        date: new Date(2017, 3, 27, 15, 43, 10),
-        label: 'First transaction',
-        amount: 130
+        id: 5,
+        code: 'ZAR',
+        name: 'South African rand',
+        base: false
       },
       {
-        date: new Date(2017, 7, 3, 9, 35, 0),
-        label: 'Second transaction',
-        amount: 130
+        id: 6,
+        code: 'TRY',
+        name: 'Turkish lira',
+        base: false
       },
       {
-        date: new Date(2017, 3, 27, 15, 43, 10),
-        label: 'First transaction',
-        amount: 130
+        id: 7,
+        code: 'INR',
+        name: 'Indian Rupee',
+        base: false
       }
     ];
-
   }
 
 }
