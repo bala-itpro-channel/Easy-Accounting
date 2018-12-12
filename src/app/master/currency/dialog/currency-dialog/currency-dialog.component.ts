@@ -21,4 +21,7 @@ export class CurrencyDialogComponent implements OnInit {
     
   }
 
+  saveCurrency(currency) {
+
+  }
 }

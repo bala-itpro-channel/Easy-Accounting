@@ -5,3 +5,9 @@
 p-dataTable th:first-child {
     width: 100px !important;
 }
+.add_box {
+    position: absolute;
+    z-index: 1;
+    top: 80px;
+    right: 20px;
+}

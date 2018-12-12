@@ -14,6 +14,7 @@ import { DemoMaterialModule } from './material-module';
 import { CurrencyDialogComponent } from './master/currency/dialog/currency-dialog/currency-dialog.component';
 
 import { FormsModule } from '@angular/forms';
+import { AppService } from "./app.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { FormsModule } from '@angular/forms';
     DemoMaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent],
   entryComponents: [CurrencyDialogComponent]
 })
