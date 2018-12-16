@@ -18,18 +18,28 @@ export class CurrencyComponent implements OnInit {
   }
 
   onRowSelect(event) {
-    console.log('Before dialog');
-    console.log(event);
+  
     const dialogRef = this.dialog.open(CurrencyDialogComponent, {
       width: '350px',
-      height: '400px',
-      data: this.selectedCurrency
+      // height: '400px',
+      data: event ? this.selectedCurrency : {
+        id: 0,
+        code: '',
+        name: '',
+        base: false
+      }
     });
+
     console.log('After dialog');
+    
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       // this.animal = result;
     });
+  }
+
+  addCurrency() {
+    this.onRowSelect(null);
   }
 
 }

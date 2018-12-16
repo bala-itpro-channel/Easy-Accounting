@@ -1,17 +1,17 @@
 <h2 mat-dialog-title>Add/Eit/Delete Currency</h2>
 <mat-dialog-content>
   <mat-form-field>
-    <input matInput [(ngModel)]="currency.id" type="number" placeholder="Currency Id">
+    <input matInput [(ngModel)]="data.id" type="number" placeholder="Currency Id">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="currency.code" placeholder="Currency Code">
+    <input matInput [(ngModel)]="data.code" placeholder="Currency Code">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="currency.name" placeholder="Currency Name">
+    <input matInput [(ngModel)]="data.name" placeholder="Currency Name">
   </mat-form-field> 
   <mat-slide-toggle
     [color]="'blue'"
-    [(ngModel)]="currency.base">
+    [(ngModel)]="data.base">
   Base
   </mat-slide-toggle>
 </mat-dialog-content>
