@@ -11,6 +11,23 @@ export class AppService {
       this.loadCurrencies();
   }
 
+  addCurrency( data ) {
+    let id = this.currencies[this.currencies.length-1]["id"] + 1; 
+    data["id"] = id;
+    this.currencies.push(data);
+  }
+
+  updateCurrency( data ) {
+    let ind = this.currencies.findIndex((itm)=>{
+      return itm.id == data.id;
+    })
+
+    this.currencies[ind]["id"] = data.id;
+    this.currencies[ind]["code"] = data.code;
+    this.currencies[ind]["name"] = data.name;
+    this.currencies[ind]["base"] = data.base;
+  }
+
   loadCurrencies() {
     this.currencies = [      
         {

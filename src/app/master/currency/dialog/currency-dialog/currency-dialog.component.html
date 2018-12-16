@@ -16,7 +16,8 @@
   </mat-slide-toggle>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="currency">Delete</button>
+  <button mat-button [mat-dialog-close]="data">Delete</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button mat-button [mat-dialog-close]="currency" (click)="saveCurrency(currency)">Save</button>
+  <button mat-button [mat-dialog-close]="data">Save</button>
+  <button mat-button [mat-dialog-close]>Cancel</button>
 </mat-dialog-actions>

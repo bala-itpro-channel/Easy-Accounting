@@ -10,10 +10,15 @@ import { AppService } from './../../app.service';
 export class CurrencyComponent implements OnInit {
   currencies: Array<any> = [];
   selectedCurrency: any;
+  visible: any = true;
 
   constructor(private dialog: MatDialog, private appService: AppService) { }
 
   ngOnInit() {
+    this.loadData();  
+  }
+
+  loadData() {
     this.currencies = this.appService.currencies;
   }
 
@@ -34,8 +39,26 @@ export class CurrencyComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      console.log(result);
+      if (result) {
+        if (result.id == 0) {
+          this.appService.addCurrency(result);
+
+          this.loadData();
+
+          this.updateVisibility();
+        }
+        else {
+          this.appService.updateCurrency(result);  
+        }
+      }
       // this.animal = result;
     });
+  }
+
+  updateVisibility(): void {
+    this.visible = false;
+    setTimeout(() => this.visible = true, 0);
   }
 
   addCurrency() {

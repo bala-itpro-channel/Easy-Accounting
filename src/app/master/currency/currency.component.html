@@ -1,11 +1,14 @@
 <div class="add_box" (click)="addCurrency()"><i class="material-icons plus">add_box</i></div>
-<p-dataTable [value]="currencies" [paginator]="true" [rows]="5" selectionMode="single" 
-  [pageLinks]="5" [rowsPerPageOptions]="[5, 10, 15]" [responsive]="true" 
-  (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency"
+<div *ngIf="visible">
+  <p-dataTable [value]="currencies" [paginator]="true" [rows]="5" selectionMode="single" 
+  [pageLinks]="1" [rowsPerPageOptions]="[5, 10, 15]" [responsive]="true" 
+  (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency" #currTable
   >
   <p-header>Currency List</p-header>
   <p-column field="id" header="Id" [sortable]="true"></p-column>
   <p-column field="code" header="Currency Code" [sortable]="true"></p-column>
   <p-column field="name" header="Currency Name" [sortable]="true"></p-column>
   <p-column field="base" header="Base Currency" [sortable]="true"></p-column>
-</p-dataTable>
+  </p-dataTable>  
+</div>
+
