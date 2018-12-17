@@ -65,4 +65,20 @@ export class CurrencyComponent implements OnInit {
     this.onRowSelect(null);
   }
 
+  deleteItem(event, rowData) {
+    // rowData
+    let sure = confirm('Are you sure you want to delete?');
+
+    if (sure) {
+      console.log(rowData);
+      let ind = this.currencies.findIndex((ite) => {
+        return ite.id == rowData.id;
+      });
+      this.currencies.splice(ind, 1);
+
+      this.updateVisibility();
+    }
+
+    event.stopPropagation();
+  }
 }

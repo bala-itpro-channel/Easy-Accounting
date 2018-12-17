@@ -9,6 +9,11 @@
   <p-column field="code" header="Currency Code" [sortable]="true"></p-column>
   <p-column field="name" header="Currency Name" [sortable]="true"></p-column>
   <p-column field="base" header="Base Currency" [sortable]="true"></p-column>
+  <p-column field="base" header="Base Currency" [sortable]="true">
+    <ng-template let-rowData="rowData" pTemplate type="body">
+      <div (click)="deleteItem($event, rowData)"> Delete </div>
+    </ng-template>
+  </p-column>
   </p-dataTable>  
 </div>
 
