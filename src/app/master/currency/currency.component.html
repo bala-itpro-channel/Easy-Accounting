@@ -2,14 +2,15 @@
 <div *ngIf="visible">
   <p-dataTable [value]="currencies" [paginator]="true" [rows]="5" selectionMode="single" 
   [pageLinks]="1" [rowsPerPageOptions]="[5, 10, 15]" [responsive]="true" 
+  [immutable]="false"
   (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency" #currTable
   >
   <p-header>Currency List</p-header>
-  <p-column field="id" header="Id" [sortable]="true"></p-column>
-  <p-column field="code" header="Currency Code" [sortable]="true"></p-column>
-  <p-column field="name" header="Currency Name" [sortable]="true"></p-column>
-  <p-column field="base" header="Base Currency" [sortable]="true"></p-column>
-  <p-column field="base" header="Base Currency" [sortable]="true">
+  <p-column field="id" header="Id" [sortable]="true" [filter]="true"></p-column>
+  <p-column field="code" header="Currency Code" [sortable]="true" [filter]="true"></p-column>
+  <p-column field="name" header="Currency Name" [sortable]="true" [filter]="true"></p-column>
+  <p-column field="base" header="Base Currency" [sortable]="true" [filter]="true"></p-column>
+  <p-column>
     <ng-template let-rowData="rowData" pTemplate type="body">
       <div (click)="deleteItem($event, rowData)"> Delete </div>
     </ng-template>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CurrencyDialogComponent } from './dialog/currency-dialog/currency-dialog.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { AppService } from './../../app.service';
+// import 'rxjs/add/observable/of';
+// import { Observable, of } from 'rxjs/internal/Observable';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
@@ -15,11 +18,13 @@ export class CurrencyComponent implements OnInit {
   constructor(private dialog: MatDialog, private appService: AppService) { }
 
   ngOnInit() {
-    this.loadData();  
+    this.loadData().subscribe(resp=>{
+      this.currencies = resp;
+    });
   }
 
-  loadData() {
-    this.currencies = this.appService.currencies;
+  loadData(): Observable<any> {
+    return of(this.appService.currencies);
   }
 
   onRowSelect(event) {
@@ -46,7 +51,7 @@ export class CurrencyComponent implements OnInit {
 
           this.loadData();
 
-          this.updateVisibility();
+          // this.updateVisibility();
         }
         else {
           this.appService.updateCurrency(result);  
@@ -76,7 +81,7 @@ export class CurrencyComponent implements OnInit {
       });
       this.currencies.splice(ind, 1);
 
-      this.updateVisibility();
+      // this.updateVisibility();
     }
 
     event.stopPropagation();
