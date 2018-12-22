@@ -48,13 +48,13 @@ export class CurrencyComponent implements OnInit {
       if (result) {
         if (result.id == 0) {
           this.appService.addCurrency(result);
-
-          this.loadData();
+          // this.currencies.push(result);
+          // this.loadData();
 
           // this.updateVisibility();
         }
         else {
-          this.appService.updateCurrency(result);  
+          // this.appService.updateCurrency(result);  
         }
       }
       // this.animal = result;
