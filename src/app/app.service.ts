@@ -71,6 +71,24 @@ export class AppService {
           code: 'INR',
           name: 'Indian Rupee',
           base: false
+        },
+        {
+          id: 8,
+          code: 'ZAR',
+          name: 'South African rand2',
+          base: false
+        },
+        {
+          id: 9,
+          code: 'TRY',
+          name: 'Turkish lira2',
+          base: false
+        },
+        {
+          id: 10,
+          code: 'INR',
+          name: 'Indian Rupee2',
+          base: false
         }
       ];  
   }

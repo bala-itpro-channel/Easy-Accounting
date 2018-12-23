@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { JournalComponent } from './journal/journal.component';
+import { JournalComponent } from './gl/journal/journal.component';
 import { CurrencyComponent } from './master/currency/currency.component';
 import { LocationComponent } from './master/location/location.component';
 import { HomeComponent } from './home/home.component';

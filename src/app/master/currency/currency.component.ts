@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyDialogComponent } from './dialog/currency-dialog/currency-dialog.component';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { AppService } from './../../app.service';
 // import 'rxjs/add/observable/of';
 // import { Observable, of } from 'rxjs/internal/Observable';
+
+import {MatSnackBar} from '@angular/material';
+import { DeleteDialogComponent } from './../../shared/dialog/delete/delete.component';
+
 import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-currency',
@@ -15,7 +19,7 @@ export class CurrencyComponent implements OnInit {
   selectedCurrency: any;
   visible: any = true;
 
-  constructor(private dialog: MatDialog, private appService: AppService) { }
+  constructor(private dialog: MatDialog, private appService: AppService, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.loadData().subscribe(resp=>{
@@ -48,6 +52,12 @@ export class CurrencyComponent implements OnInit {
       if (result) {
         if (result.id == 0) {
           this.appService.addCurrency(result);
+
+          this.snackbar.open('Added successfully', 'Close', 
+          { 
+            panelClass: ['snack-bar-color'],
+            duration: 2000
+          });
           // this.currencies.push(result);
           // this.loadData();
 
@@ -55,15 +65,15 @@ export class CurrencyComponent implements OnInit {
         }
         else {
           // this.appService.updateCurrency(result);  
+          this.snackbar.open('Updated successfully', 'Close', 
+          { 
+            panelClass: ['snack-bar-color'],
+            duration: 3000
+          });
         }
       }
       // this.animal = result;
     });
-  }
-
-  updateVisibility(): void {
-    this.visible = false;
-    setTimeout(() => this.visible = true, 0);
   }
 
   addCurrency() {
@@ -72,17 +82,43 @@ export class CurrencyComponent implements OnInit {
 
   deleteItem(event, rowData) {
     // rowData
-    let sure = confirm('Are you sure you want to delete?');
+    //let sure = confirm('Are you sure you want to delete?');
+    const dialogConfig = new MatDialogConfig();
 
-    if (sure) {
-      console.log(rowData);
-      let ind = this.currencies.findIndex((ite) => {
-        return ite.id == rowData.id;
-      });
-      this.currencies.splice(ind, 1);
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
 
-      // this.updateVisibility();
-    }
+    let dialog = this.dialog.open(DeleteDialogComponent, dialogConfig);
+
+    dialog.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(rowData);
+        let ind = this.currencies.findIndex((ite) => {
+          return ite.id == rowData.id;
+        });
+        this.currencies.splice(ind, 1);
+  
+        this.snackbar.open('Deleted successfully', 'Close', 
+            { 
+              panelClass: ['snack-bar-color'],
+              duration: 2000
+            });
+      }
+    });
+
+    // if (sure) {
+    //   console.log(rowData);
+    //   let ind = this.currencies.findIndex((ite) => {
+    //     return ite.id == rowData.id;
+    //   });
+    //   this.currencies.splice(ind, 1);
+
+    //   this.snackbar.open('Deleted successfully', 'Close', 
+    //       { 
+    //         panelClass: ['snack-bar-color'],
+    //         duration: 3000
+    //       });
+    // }
 
     event.stopPropagation();
   }

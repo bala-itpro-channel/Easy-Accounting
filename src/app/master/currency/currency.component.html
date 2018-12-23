@@ -1,18 +1,33 @@
 <div class="add_box" (click)="addCurrency()"><i class="material-icons plus">add_box</i></div>
 <div *ngIf="visible">
-  <p-dataTable [value]="currencies" [paginator]="true" [rows]="5" selectionMode="single" 
+  <p-dataTable [value]="currencies" [paginator]="true" [rows]="15" selectionMode="single" 
   [pageLinks]="1" [rowsPerPageOptions]="[5, 10, 15]" [responsive]="true" 
   [immutable]="false"
   (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency" #currTable
   >
   <p-header>Currency List</p-header>
-  <p-column field="id" header="Id" [sortable]="true" [filter]="true"></p-column>
+  <p-column field="id" header="Id" [sortable]="true" [filter]="true">
+      <ng-template let-rowData="rowData" pTemplate type="body">
+          <div class='basediv'>
+            {{rowData.id}}
+          </div>
+        </ng-template>
+  </p-column>
   <p-column field="code" header="Currency Code" [sortable]="true" [filter]="true"></p-column>
   <p-column field="name" header="Currency Name" [sortable]="true" [filter]="true"></p-column>
-  <p-column field="base" header="Base Currency" [sortable]="true" [filter]="true"></p-column>
+  <p-column field="base" header="Base Currency" [sortable]="true" [filter]="true">
+      <ng-template let-rowData="rowData" pTemplate type="body">
+        <div class='basediv'>
+          <mat-slide-toggle
+            [color]="'blue'"
+            [(ngModel)]="rowData.base">
+          </mat-slide-toggle>
+        </div>
+      </ng-template>
+  </p-column>
   <p-column>
     <ng-template let-rowData="rowData" pTemplate type="body">
-      <div (click)="deleteItem($event, rowData)"> Delete </div>
+      <div (click)="deleteItem($event, rowData)" class="delete"> <i class="material-icons">delete_outline</i> </div>
     </ng-template>
   </p-column>
   </p-dataTable>  
