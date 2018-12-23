@@ -2,39 +2,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutes } from './app-routing';
 import { AppComponent } from './app.component';
 import { JournalComponent } from './gl/journal/journal.component';
-import { CurrencyComponent } from './master/currency/currency.component';
-import { LocationComponent } from './master/location/location.component';
 import { HomeComponent } from './home/home.component';
 import { DataTableModule } from 'primeng/primeng';
 import { DemoMaterialModule } from './material-module';
-import { CurrencyDialogComponent } from './master/currency/dialog/currency-dialog/currency-dialog.component';
 import { DeleteDialogComponent } from './shared/dialog/delete/delete.component';
 import { FormsModule } from '@angular/forms';
 import { AppService } from "./app.service";
+import { MasterModule } from './master/master.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JournalComponent,
-    CurrencyComponent,
-    LocationComponent,
     HomeComponent,
-    CurrencyDialogComponent,
     DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    RouterModule.forRoot(AppRoutes),
     DataTableModule,
     DemoMaterialModule,
-    FormsModule
+    FormsModule,
+    MasterModule
+  ],
+  exports: [
+    DeleteDialogComponent,
+    DemoMaterialModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent],
-  entryComponents: [CurrencyDialogComponent, DeleteDialogComponent]
+  entryComponents: []
 })
 export class AppModule { }
