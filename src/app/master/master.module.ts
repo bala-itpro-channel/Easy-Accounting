@@ -10,25 +10,26 @@ import { CurrencyDialogComponent } from './currency/dialog/currency-dialog/curre
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MasterComponent } from './master.component';
+import { MasterRoutingModule } from './master.router';
 
-const masterRoutes: Routes = [
-  {
-  path: 'master',
-  children: [
-      {
-        path: '',
-        component: MasterComponent
-      },
-      {
-         path: 'currency',
-         component: CurrencyComponent
-      },
-      {
-         path: 'location',
-         component: LocationComponent
-      }] 
-  }
-];
+// const masterRoutes: Routes = [
+//   {
+//   path: 'master',
+//   children: [
+//       {
+//         path: '',
+//         component: MasterComponent
+//       },
+//       {
+//          path: 'currency',
+//          component: CurrencyComponent
+//       },
+//       {
+//          path: 'location',
+//          component: LocationComponent
+//       }] 
+//   }
+// ];
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ const masterRoutes: Routes = [
     DataTableModule,
     DemoMaterialModule,
     FormsModule,
-    RouterModule.forChild(masterRoutes)
+    MasterRoutingModule
+    //RouterModule.forChild(masterRoutes)
   ],
   providers: [],
   bootstrap: [],
