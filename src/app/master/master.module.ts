@@ -1,5 +1,3 @@
-//import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { CurrencyComponent } from './currency/currency.component';
@@ -8,29 +6,9 @@ import { DataTableModule } from 'primeng/primeng';
 import { DemoMaterialModule } from '../material-module';
 import { CurrencyDialogComponent } from './currency/dialog/currency-dialog/currency-dialog.component';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { MasterComponent } from './master.component';
 import { MasterRoutingModule } from './master.router';
 import { CommonModule } from '@angular/common';
-
-// const masterRoutes: Routes = [
-//   {
-//   path: 'master',
-//   children: [
-//       {
-//         path: '',
-//         component: MasterComponent
-//       },
-//       {
-//          path: 'currency',
-//          component: CurrencyComponent
-//       },
-//       {
-//          path: 'location',
-//          component: LocationComponent
-//       }] 
-//   }
-// ];
 
 @NgModule({
   declarations: [
@@ -40,14 +18,11 @@ import { CommonModule } from '@angular/common';
     MasterComponent
   ],
   imports: [
-    //BrowserModule,
     CommonModule,
-    //BrowserAnimationsModule,
     DataTableModule,
     DemoMaterialModule,
     FormsModule,
     MasterRoutingModule
-    //RouterModule.forChild(masterRoutes)
   ],
   providers: [],
   bootstrap: [],
