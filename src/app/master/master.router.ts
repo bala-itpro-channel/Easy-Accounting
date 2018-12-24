@@ -4,31 +4,19 @@ import { CurrencyComponent } from './currency/currency.component';
 import { LocationComponent } from './location/location.component';
 import { MasterComponent } from './master.component';
 
-const masterRoutes: Routes = [{
-    path: '',
-    component: MasterComponent,
-        // children: [
-        //     // {
-        //     //     path: '',
-        //     //     component: CurrencyComponent,
-        //     // },
-        //     {
-        //         path: 'currency',
-        //         component: CurrencyComponent,
-        //     },
-        //     {
-        //         path: 'location',
-        //         component: LocationComponent
-        //     }
-        // ]
+const masterRoutes: Routes = [
+    {
+        path: '',
+        component: MasterComponent 
     },
-    // {
-    //     path: '',
-    //     redirectTo: '',
-    //     pathMatch: 'full'
-    // }
-];
-
+    {
+        path: 'currency',
+        component: CurrencyComponent,
+    },
+    {
+        path: 'location',
+        component: LocationComponent
+    }];
 
 @NgModule({
     imports: [RouterModule.forChild(masterRoutes)],

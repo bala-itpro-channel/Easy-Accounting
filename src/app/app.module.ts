@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { JournalComponent } from './gl/journal/journal.component';
 import { HomeComponent } from './home/home.component';
 import { DataTableModule } from 'primeng/primeng';
-import { DemoMaterialModule } from './material-module';
+// import { DemoMaterialModule } from './material-module';
 import { DeleteDialogComponent } from './shared/dialog/delete/delete.component';
 import { FormsModule } from '@angular/forms';
 import { AppService } from "./app.service";
@@ -20,18 +20,18 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     DeleteDialogComponent
   ],
-  imports: [
+  imports: [    
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes),
     DataTableModule,
-    DemoMaterialModule,
+    //DemoMaterialModule,
     FormsModule,
-    MasterModule
+    // MasterModule
   ],
   exports: [
     DeleteDialogComponent,
-    DemoMaterialModule
+    //DemoMaterialModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent],

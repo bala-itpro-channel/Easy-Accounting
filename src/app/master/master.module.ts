@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MasterComponent } from './master.component';
 import { MasterRoutingModule } from './master.router';
+import { CommonModule } from '@angular/common';
 
 // const masterRoutes: Routes = [
 //   {
@@ -39,8 +40,9 @@ import { MasterRoutingModule } from './master.router';
     MasterComponent
   ],
   imports: [
-    // BrowserModule,
-    BrowserAnimationsModule,
+    //BrowserModule,
+    CommonModule,
+    //BrowserAnimationsModule,
     DataTableModule,
     DemoMaterialModule,
     FormsModule,
