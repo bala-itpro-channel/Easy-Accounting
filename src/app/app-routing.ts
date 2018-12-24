@@ -10,7 +10,7 @@ export const AppRoutes = [
     },
     {
         path: 'master',
-        loadChilderen: './master/master.module#MasterModule'
+        loadChildren: './master/master.module#MasterModule'
     },
     {
         path: '',
