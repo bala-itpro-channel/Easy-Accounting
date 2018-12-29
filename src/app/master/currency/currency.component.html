@@ -3,8 +3,7 @@
   <p-dataTable [value]="currencies" [paginator]="true" [rows]="15" selectionMode="single" 
   [pageLinks]="1" [rowsPerPageOptions]="[5, 10, 15]" [responsive]="true" 
   [immutable]="false"
-  (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency" #currTable
-  >
+  (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency" #currTable>
   <p-header>Currency List</p-header>
   <p-column field="id" header="Id" [sortable]="true" [filter]="true">
       <ng-template let-rowData="rowData" pTemplate type="body">
@@ -20,6 +19,7 @@
         <div class='basediv'>
           <mat-slide-toggle
             [color]="'blue'"
+            [disabled]="true"
             [(ngModel)]="rowData.base">
           </mat-slide-toggle>
         </div>

@@ -9,6 +9,7 @@ import {MatSnackBar} from '@angular/material';
 import { DeleteDialogComponent } from './../../shared/dialog/delete/delete.component';
 
 import { Observable, of } from 'rxjs';
+import { CurrencyService } from './currency.service';
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
@@ -19,10 +20,13 @@ export class CurrencyComponent implements OnInit {
   selectedCurrency: any;
   visible: any = true;
 
-  constructor(private dialog: MatDialog, private appService: AppService, private snackbar: MatSnackBar) { }
+  constructor(private dialog: MatDialog,
+    private currencyService: CurrencyService,
+    private appService: AppService,
+    private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.loadData().subscribe(resp=>{
+    this.currencyService.getCurrencies().subscribe(resp=>{
       this.currencies = resp;
     });
   }
@@ -32,11 +36,22 @@ export class CurrencyComponent implements OnInit {
   }
 
   onRowSelect(event) {
-  
+    if (event) {
+      this.currencyService.getCurrency(this.selectedCurrency.id)
+      .subscribe(result=>{
+        this.showDialog(result);
+      })
+    }
+    else {
+      this.showDialog(null);
+    }
+  }
+
+  showDialog(currency): void {
     const dialogRef = this.dialog.open(CurrencyDialogComponent, {
       width: '350px',
       // height: '400px',
-      data: event ? this.selectedCurrency : {
+      data: currency ? currency : {
         id: 0,
         code: '',
         name: '',
@@ -51,31 +66,35 @@ export class CurrencyComponent implements OnInit {
       console.log(result);
       if (result) {
         if (result.id == 0) {
-          this.appService.addCurrency(result);
+          this.currencyService.createCurrency(result).subscribe(result=>{
+            this.snackbar.open('Added successfully', 'Close', 
+            { 
+              panelClass: ['snack-bar-color'],
+              duration: 2000
+            });
+            this.currencies.push(result);
+          })
 
-          this.snackbar.open('Added successfully', 'Close', 
-          { 
-            panelClass: ['snack-bar-color'],
-            duration: 2000
-          });
-          // this.currencies.push(result);
-          // this.loadData();
-
-          // this.updateVisibility();
+         
         }
         else {
           // this.appService.updateCurrency(result);  
-          this.snackbar.open('Updated successfully', 'Close', 
-          { 
-            panelClass: ['snack-bar-color'],
-            duration: 3000
-          });
+          this.currencyService.updateCurrency(result)
+            .subscribe(result=>{
+              this.selectedCurrency.code = result.code;
+              this.selectedCurrency.name = result.name;
+              this.selectedCurrency.base = result.base;
+              this.snackbar.open('Updated successfully', 'Close', 
+              { 
+                panelClass: ['snack-bar-color'],
+                duration: 3000
+              });    
+            })
         }
       }
       // this.animal = result;
     });
   }
-
   addCurrency() {
     this.onRowSelect(null);
   }
@@ -93,16 +112,21 @@ export class CurrencyComponent implements OnInit {
     dialog.afterClosed().subscribe(result => {
       if (result) {
         console.log(rowData);
-        let ind = this.currencies.findIndex((ite) => {
-          return ite.id == rowData.id;
-        });
-        this.currencies.splice(ind, 1);
-  
-        this.snackbar.open('Deleted successfully', 'Close', 
+        
+        this.currencyService.deleteCurrency(rowData.id)
+        .subscribe(result=>{
+          let ind = this.currencies.findIndex((ite) => {
+            return ite.id == rowData.id;
+          });
+          this.currencies.splice(ind, 1);
+
+          this.snackbar.open('Deleted successfully', 'Close', 
             { 
               panelClass: ['snack-bar-color'],
               duration: 2000
             });
+        })
+        
       }
     });
 

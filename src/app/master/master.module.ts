@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { MasterComponent } from './master.component';
 import { MasterRoutingModule } from './master.router';
 import { CommonModule } from '@angular/common';
+import { fakeMasterBackendProvider } from './master-fake.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,12 @@ import { CommonModule } from '@angular/common';
     DataTableModule,
     DemoMaterialModule,
     FormsModule,
-    MasterRoutingModule
+    MasterRoutingModule,
+    // HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [],
   exports: [],
   entryComponents: [CurrencyDialogComponent]

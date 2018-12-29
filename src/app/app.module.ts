@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { AppService } from "./app.service";
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { fakeMasterBackendProvider } from './master/master-fake.service';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,12 @@ import { SharedModule } from './shared/shared.module';
     RouterModule.forRoot(AppRoutes),
     DataTableModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   exports: [
   ],
-  providers: [AppService],
+  providers: [AppService, fakeMasterBackendProvider],
   bootstrap: [AppComponent],
   entryComponents: []
 })
