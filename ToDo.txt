@@ -1,0 +1,5 @@
+unit test with spy, mock component, service etc
+code coverage
+include exclude files from ng test
+
+
