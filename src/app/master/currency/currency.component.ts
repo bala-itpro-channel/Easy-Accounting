@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CurrencyDialogComponent } from './dialog/currency-dialog/currency-dialog.component';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { AppService } from './../../app.service';
-// import 'rxjs/add/observable/of';
-// import { Observable, of } from 'rxjs/internal/Observable';
 
 import {MatSnackBar} from '@angular/material';
 import { DeleteDialogComponent } from './../../shared/dialog/delete/delete.component';
 
 import { Observable, of } from 'rxjs';
 import { CurrencyService } from './currency.service';
+
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
@@ -20,19 +19,15 @@ export class CurrencyComponent implements OnInit {
   selectedCurrency: any;
   visible: any = true;
 
-  constructor(private dialog: MatDialog,
+  constructor(
+    private dialog: MatDialog,
     private currencyService: CurrencyService,
-    private appService: AppService,
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.currencyService.getCurrencies().subscribe(resp=>{
       this.currencies = resp;
     });
-  }
-
-  loadData(): Observable<any> {
-    return of(this.appService.currencies);
   }
 
   onRowSelect(event) {
@@ -50,7 +45,6 @@ export class CurrencyComponent implements OnInit {
   showDialog(currency): void {
     const dialogRef = this.dialog.open(CurrencyDialogComponent, {
       width: '350px',
-      // height: '400px',
       data: currency ? currency : {
         id: 0,
         code: '',
@@ -92,16 +86,15 @@ export class CurrencyComponent implements OnInit {
             })
         }
       }
-      // this.animal = result;
     });
   }
+  
   addCurrency() {
     this.onRowSelect(null);
   }
 
   deleteItem(event, rowData) {
     // rowData
-    //let sure = confirm('Are you sure you want to delete?');
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -130,20 +123,7 @@ export class CurrencyComponent implements OnInit {
       }
     });
 
-    // if (sure) {
-    //   console.log(rowData);
-    //   let ind = this.currencies.findIndex((ite) => {
-    //     return ite.id == rowData.id;
-    //   });
-    //   this.currencies.splice(ind, 1);
-
-    //   this.snackbar.open('Deleted successfully', 'Close', 
-    //       { 
-    //         panelClass: ['snack-bar-color'],
-    //         duration: 3000
-    //       });
-    // }
-
     event.stopPropagation();
   }
+
 }

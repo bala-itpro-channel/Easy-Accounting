@@ -53,7 +53,7 @@ class MockCurrencyService {
   }
 }
 
-fdescribe('CurrencyService', () => {
+describe('CurrencyService', () => {
   beforeEach(() => {
     // https://github.com/angular/angular/issues/10727
     TestBed.configureTestingModule({
