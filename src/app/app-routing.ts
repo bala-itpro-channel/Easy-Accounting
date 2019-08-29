@@ -2,6 +2,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule, Injectable } from '@angular/core';
 import { RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
+import { LoginComponent } from './login/login.component';
 
 @Injectable({
     providedIn: 'root'
@@ -12,29 +13,31 @@ export class AuthGuard implements CanActivate {
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const isAuthenticated = localStorage.getItem('authenticated') ? localStorage.getItem('authenticated') === 'true' : false;
         if (!isAuthenticated) {
-            this.router.navigate(['home']);
+            this.router.navigate(['login']);
         }
+
         return isAuthenticated;
     }
 }
 
-export const AppRoutes = [
-    {
+export const AppRoutes = [{
+        path: 'login',
+        pathMatch: 'full',
+        component:   LoginComponent
+    }, {
         path: 'home',
         pathMatch: 'full',
-        component:   HomeComponent
-    },
-    {
+        component:   HomeComponent,
+        canActivate: [AuthGuard]
+    }, {
         path: 'master',
         loadChildren: './master/master.module#MasterModule',
         canActivate: [AuthGuard]
-    },
-    {
+    }, {
         path: '',
         pathMatch: 'full',
         redirectTo: 'home'
-    },    
-    {
+    }, {
         path: '**',
         redirectTo: 'home'
     },
