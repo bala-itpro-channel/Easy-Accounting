@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CurrencyComponent } from './currency/currency.component';
 import { LocationComponent } from './location/location.component';
 import { MasterComponent } from './master.component';
+import { AuthResolverService } from '../shared/services/auth.service';
 
 const masterRoutes: Routes = [
     {
@@ -12,6 +13,9 @@ const masterRoutes: Routes = [
     {
         path: 'currency',
         component: CurrencyComponent,
+        resolve: {
+            user: AuthResolverService
+        }
     },
     {
         path: 'location',

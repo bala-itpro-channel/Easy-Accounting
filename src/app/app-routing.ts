@@ -1,6 +1,22 @@
 import { HomeComponent } from './home/home.component';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NgModule, Injectable } from '@angular/core';
+import { RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { AuthService } from './shared/services/auth.service';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+    constructor( public router: Router, private authService: AuthService) {}
+
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        const isAuthenticated = localStorage.getItem('authenticated') ? localStorage.getItem('authenticated') === 'true' : false;
+        if (!isAuthenticated) {
+            this.router.navigate(['home']);
+        }
+        return isAuthenticated;
+    }
+}
 
 export const AppRoutes = [
     {
@@ -10,7 +26,8 @@ export const AppRoutes = [
     },
     {
         path: 'master',
-        loadChildren: './master/master.module#MasterModule'
+        loadChildren: './master/master.module#MasterModule',
+        canActivate: [AuthGuard]
     },
     {
         path: '',
@@ -25,9 +42,9 @@ export const AppRoutes = [
 
 @NgModule({
     imports: [
-      RouterModule.forRoot(AppRoutes)
+        RouterModule.forRoot(AppRoutes)
     ],
     exports: [RouterModule],
     providers: []
-  })
-  export class AppRoutingModule { }
+})
+export class AppRoutingModule { }

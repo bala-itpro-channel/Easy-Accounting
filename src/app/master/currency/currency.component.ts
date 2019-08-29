@@ -8,6 +8,7 @@ import { DeleteDialogComponent } from './../../shared/dialog/delete/delete.compo
 
 import { Observable, of } from 'rxjs';
 import { CurrencyService } from './currency.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-currency',
@@ -20,11 +21,19 @@ export class CurrencyComponent implements OnInit {
   visible: any = true;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private dialog: MatDialog,
     private currencyService: CurrencyService,
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
+
+    this.activatedRoute.data.subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+
     this.currencyService.getCurrencies().subscribe(resp=>{
       this.currencies = resp;
     });
