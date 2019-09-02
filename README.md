@@ -52,3 +52,7 @@ The transactions includes
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/05-currency-master.png' />
   <br/><br/>
 </div>
+<div style='padding-bottom: 20px'>
+  <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/06-currency-master.png' />
+  <br/><br/>
+</div>
