@@ -5,6 +5,7 @@ Easy Accounting is a Responsive app to manage company and personal finance. The 
 <ol>
   <li>Masters</li>
   <li>Transactions</li>
+  <li>Dashboards</li>
   <li>Reports</li>
 </ol>
 
