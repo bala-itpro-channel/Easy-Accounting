@@ -32,18 +32,18 @@ The transactions includes
 
 # App Screenshots
 
-<div>
+<div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/01-login.png' />
 </div>
-<div>
+<div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/02-login.png' />
 </div>
-<div>
+<div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/03-login-error.png' />
 </div>
-<div>
+<div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/04-menu.png' />
 </div>
-<div>
+<div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/05-currency-master.png' />
 </div>
