@@ -34,16 +34,21 @@ The transactions includes
 
 <div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/01-login.png' />
+  <br/><br/>
 </div>
 <div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/02-login.png' />
+  <br/><br/>
 </div>
 <div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/03-login-error.png' />
+  <br/><br/>
 </div>
 <div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/04-menu.png' />
+  <br/><br/>
 </div>
 <div style='padding-bottom: 20px'>
   <img src='https://raw.githubusercontent.com/bala-itpro-channel/Easy-Accounting/master/src/screen-shots/05-currency-master.png' />
+  <br/><br/>
 </div>
