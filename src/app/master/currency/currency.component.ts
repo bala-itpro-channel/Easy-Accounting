@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyDialogComponent } from './dialog/currency-dialog/currency-dialog.component';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
-import { AppService } from './../../app.service';
 
 import {MatSnackBar} from '@angular/material';
 import { DeleteDialogComponent } from './../../shared/dialog/delete/delete.component';
@@ -81,7 +80,6 @@ export class CurrencyComponent implements OnInit {
          
         }
         else {
-          // this.appService.updateCurrency(result);  
           this.currencyService.updateCurrency(result)
             .subscribe(result=>{
               this.selectedCurrency.code = result.code;

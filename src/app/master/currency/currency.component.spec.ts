@@ -5,7 +5,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material';
 import { DataTableModule } from 'primeng/primeng';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoMaterialModule } from 'src/app/material-module';
+import { MaterialModule } from 'src/app/material-module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +19,7 @@ fdescribe('CurrencyComponent', () => {
       declarations: [ CurrencyComponent ],
       imports: [
         DataTableModule,
-        DemoMaterialModule,
+        MaterialModule,
         FormsModule,
         HttpClientModule
       ]

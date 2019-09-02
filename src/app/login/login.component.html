@@ -1,3 +1,38 @@
 <div>
-  Login page
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+
+      <form [formGroup]="form" (submit)="submit()">
+        <div>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+            <div *ngIf="username.errors.required">Name is required.</div>
+            <div *ngIf="username.errors.minlength">Name must be at least 4 characters long.</div>
+          </div>
+        </div>
+        
+        <div>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <div *ngIf="password.errors.required">Password is required.</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 4 characters long.</div>
+          </div>
+        </div>
+        
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+        
+        <div class="button">
+          <button type="submit" mat-button>Login</button>
+        </div>
+      
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -10,12 +10,31 @@ export class MasterFakeBackendInterceptor implements HttpInterceptor {
         console.log()
     }
     loadCurrencies() {
-        let curr = `[      
-            {
-              "id": 1,
-              "code": "SCR",
-              "name": "Seychelles Rupees",
-              "base": true
+        let curr = `[{
+                "id": 1,
+                "code": "USD",
+                "name": "United states dollar",
+                "base": true
+            },{
+                "id": 2,
+                "code": "CAD",
+                "name": "Canadian dollar",
+                "base": false
+            },{
+                "id": 3,
+                "code": "INR",
+                "name": "Indian rupees",
+                "base": false
+            },{
+                "id": 4,
+                "code": "AED",
+                "name": "Arab emirates dirhams",
+                "base": false
+            },{
+                "id": 5,
+                "code": "AUD",
+                "name": "Australian dollar",
+                "base": false
             }
           ]`;  
         localStorage.setItem("currencies", curr);
