@@ -2,6 +2,7 @@ import { TestBed, fakeAsync } from '@angular/core/testing';
 
 import { CurrencyService } from './currency.service';
 import { of } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 class MockCurrencyService {
   private mockCurrencyList: any[]; 
@@ -57,6 +58,7 @@ describe('CurrencyService', () => {
   beforeEach(() => {
     // https://github.com/angular/angular/issues/10727
     TestBed.configureTestingModule({
+      imports: [ RouterModule.forRoot([]) ],
       providers: [
         {provide: CurrencyService, useClass: MockCurrencyService}
       ]
