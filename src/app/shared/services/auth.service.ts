@@ -15,7 +15,7 @@ export class AuthResolverService implements Resolve<any> {
    * @param route
    * @param state
    */
-  resolve(route: ActivatedRouteSnapshot): Observable<boolean> {
+  resolve(route: ActivatedRouteSnapshot): Observable<boolean> | boolean {
     // const userName = route.params['userName'];
     // const url = `https://some-end-points.com/validate/${userName}`;
     // return this.http.get(url);

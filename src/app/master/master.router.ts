@@ -8,19 +8,22 @@ import { AuthResolverService } from '../shared/services/auth.service';
 const masterRoutes: Routes = [
     {
         path: '',
-        component: MasterComponent 
-    },
-    {
-        path: 'currency',
-        component: CurrencyComponent,
-        resolve: {
-            user: AuthResolverService
-        }
-    },
-    {
-        path: 'location',
-        component: LocationComponent
-    }];
+        component: MasterComponent,
+        children: [
+            {
+                path: 'currency',
+                component: CurrencyComponent,
+                resolve: {
+                    user: AuthResolverService
+                }
+            },
+            {
+                path: 'location',
+                component: LocationComponent
+            }
+        ]
+    }
+    ];
 
 @NgModule({
     imports: [RouterModule.forChild(masterRoutes)],

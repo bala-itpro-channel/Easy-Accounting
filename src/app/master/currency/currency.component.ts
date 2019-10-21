@@ -76,8 +76,6 @@ export class CurrencyComponent implements OnInit {
             });
             this.currencies.push(result);
           })
-
-         
         }
         else {
           this.currencyService.updateCurrency(result)

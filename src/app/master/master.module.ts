@@ -24,11 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     DataTableModule,
     MaterialModule,
     FormsModule,
-    MasterRoutingModule,
-    // HttpClientModule,
+    MasterRoutingModule
   ],
   providers: [
-    
   ],
   bootstrap: [],
   exports: [],
