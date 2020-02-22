@@ -32,7 +32,7 @@ export const AppRoutes = [{
         canActivate: [AuthGuard]
     }, {
         path: 'master',
-        loadChildren: './master/master.module#MasterModule',
+        loadChildren: () => import('./master/master.module').then(m => m.MasterModule),
         canActivate: [AuthGuard]
     }, {
         path: '',
