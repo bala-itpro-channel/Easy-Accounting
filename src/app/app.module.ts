@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
     HomeComponent,
     LoginComponent
   ],
-  imports: [    
+  imports: [
     CommonModule,
     FormsModule,
     BrowserModule,
