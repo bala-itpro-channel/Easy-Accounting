@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyDialogComponent } from './dialog/currency-dialog/currency-dialog.component';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import {MatSnackBar} from '@angular/material';
 import { DeleteDialogComponent } from './../../shared/dialog/delete/delete.component';
 
-import { Observable, of } from 'rxjs';
 import { CurrencyService } from './currency.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -33,7 +32,7 @@ export class CurrencyComponent implements OnInit {
       }
     );
 
-    this.currencyService.getCurrencies().subscribe(resp=>{
+    this.currencyService.getCurrencies().subscribe(resp => {
       this.currencies = resp;
     });
   }
@@ -41,11 +40,10 @@ export class CurrencyComponent implements OnInit {
   onRowSelect(event) {
     if (event) {
       this.currencyService.getCurrency(this.selectedCurrency.id)
-      .subscribe(result=>{
+      .subscribe(result => {
         this.showDialog(result);
-      })
-    }
-    else {
+      });
+    } else {
       this.showDialog(null);
     }
   }
@@ -62,38 +60,37 @@ export class CurrencyComponent implements OnInit {
     });
 
     console.log('After dialog');
-    
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
       if (result) {
-        if (result.id == 0) {
-          this.currencyService.createCurrency(result).subscribe(result=>{
-            this.snackbar.open('Added successfully', 'Close', 
-            { 
+        if (result.id === 0) {
+          this.currencyService.createCurrency(result).subscribe( (resp) => {
+            this.snackbar.open('Added successfully', 'Close',
+            {
               panelClass: ['snack-bar-color'],
               duration: 2000
             });
-            this.currencies.push(result);
-          })
-        }
-        else {
+            this.currencies.push(resp);
+          });
+        } else {
           this.currencyService.updateCurrency(result)
-            .subscribe(result=>{
-              this.selectedCurrency.code = result.code;
-              this.selectedCurrency.name = result.name;
-              this.selectedCurrency.base = result.base;
-              this.snackbar.open('Updated successfully', 'Close', 
-              { 
+            .subscribe( (resp: any) => {
+              this.selectedCurrency.code = resp.code;
+              this.selectedCurrency.name = resp.name;
+              this.selectedCurrency.base = resp.base;
+              this.snackbar.open('Updated successfully', 'Close',
+              {
                 panelClass: ['snack-bar-color'],
                 duration: 3000
-              });    
-            })
+              });
+            });
         }
       }
     });
   }
-  
+
   addCurrency() {
     this.onRowSelect(null);
   }
@@ -105,26 +102,25 @@ export class CurrencyComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    let dialog = this.dialog.open(DeleteDialogComponent, dialogConfig);
+    const dialog = this.dialog.open(DeleteDialogComponent, dialogConfig);
 
     dialog.afterClosed().subscribe(result => {
       if (result) {
         console.log(rowData);
-        
+
         this.currencyService.deleteCurrency(rowData.id)
-        .subscribe(result=>{
-          let ind = this.currencies.findIndex((ite) => {
-            return ite.id == rowData.id;
+        .subscribe(resp => {
+          const ind = this.currencies.findIndex((ite) => {
+            return ite.id === rowData.id;
           });
           this.currencies.splice(ind, 1);
 
-          this.snackbar.open('Deleted successfully', 'Close', 
-            { 
+          this.snackbar.open('Deleted successfully', 'Close',
+            {
               panelClass: ['snack-bar-color'],
               duration: 2000
             });
-        })
-        
+        });
       }
     });
 

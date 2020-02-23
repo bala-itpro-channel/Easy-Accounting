@@ -8,7 +8,7 @@ import { AppService } from '../app.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   public form: FormGroup = new FormGroup({
     username: new FormControl('', [ Validators.required, Validators.minLength(4)]),
     password: new FormControl('', [ Validators.required, Validators.minLength(4)]),
@@ -18,9 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private service: AppService) {
   }
 
-  ngOnInit() {
-  }
-    
   submit() {
     if (this.form.valid && this.isValidCredentials()) {
       this.router.navigate(['home']);
@@ -30,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   isValidCredentials(): boolean {
-    //TODO: Need to call auth service to check the credentials using database
+    // TODO: Need to call auth service to check the credentials using database
     const isValidated = this.username.value === this.password.value;
     localStorage.setItem('authenticated', isValidated.toString());
 

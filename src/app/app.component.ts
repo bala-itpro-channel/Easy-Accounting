@@ -16,7 +16,7 @@ export class AppComponent {
   logout() {
     if (localStorage.getItem('authenticated')) {
       localStorage.removeItem('authenticated');
-      this.router.navigate(['login'])
+      this.router.navigate(['login']);
     }
   }
 }
