@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "check-engines && npm-run-all stop start:mock start:dev",
-    "start:dev": "ng serve --port=4200 --host=easy-accounting.webfrontier.ca",
+    "start:dev": "ng serve --port=4200 --host=easy-accounting.webfrontier.ca --no-live-reload",
     "start:mock": "mock-responses --db-path=./mock-server/mock-responses.sql --port=9300  --ssl --cookie='PLAY_SESSION=ACCTNBR=123456789; Path=/' --headers='Access-Control-Allow-Headers=Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Ocp-Apim-Subscription-Key, appsource, requestId, flow' &",
     "stop": "kill-port 4200 9300"
   },
@@ -28,6 +28,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^8.6.0",
     "@ngrx/router-store": "^8.6.0",
     "@ngrx/store": "^8.6.0",

@@ -15,12 +15,17 @@ import { fakeMasterBackendProvider } from './master/master-fake.service';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material-module';
 import { CommonModule } from '@angular/common';
-
+import { LocationComponent } from './master/location/location.component';
+import { StoreModule } from '@ngrx/store';
+import { LocationReducer } from './reducers/location-reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { LocationEffects } from './effects/location-effect';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    LocationComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +38,9 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     SharedModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot({locations: LocationReducer}),
+    EffectsModule.forRoot([LocationEffects])
   ],
   exports: [
   ],

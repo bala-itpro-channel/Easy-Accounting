@@ -1,3 +1,6 @@
-<p>
-  location works!
-</p>
+<div>
+  Locations <button (click)="onRefresh()">Refresh</button>
+</div>
+<div *ngFor="let location of locations$ | async; index as i;">
+  {{ location.locationName }} <button (click)="onDelete(location.locationCode)">Delete</button>
+</div>

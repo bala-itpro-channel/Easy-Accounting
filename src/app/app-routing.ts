@@ -3,6 +3,7 @@ import { NgModule, Injectable } from '@angular/core';
 import { RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
 import { LoginComponent } from './login/login.component';
+import { LocationComponent } from './master/location/location.component';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +21,6 @@ export class AuthGuard implements CanActivate {
     }
 }
 
-
 export const AppRoutes = [{
         path: 'login',
         pathMatch: 'full',
@@ -28,8 +28,8 @@ export const AppRoutes = [{
     }, {
         path: 'home',
         pathMatch: 'full',
-        component:   HomeComponent,
-        canActivate: [AuthGuard]
+        component:   LocationComponent,
+        // canActivate: [AuthGuard]
     }, {
         path: 'master',
         loadChildren: () => import('./master/master.module').then(m => m.MasterModule),
