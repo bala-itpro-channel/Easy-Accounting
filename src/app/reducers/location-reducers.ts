@@ -28,3 +28,7 @@ export function LocationReducer(state = initLocations, action: LocationActions.A
     }
   }
 }
+
+export function CurrencyReducer(state, action: LocationActions.Action) {
+  return state;
+}

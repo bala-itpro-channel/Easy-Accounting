@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as LocationActions from './../actions/location-action';
 import { Observable, of } from 'rxjs';
 import * as Models from './../models/models';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class LocationEffects {
@@ -15,7 +15,8 @@ export class LocationEffects {
   loadLocations$ = this.actions$.pipe(
     ofType(LocationActions.LOAD_LOCATIONS),
     switchMap( _ => this.getLocations().pipe(
-        map(locations => (new LocationActions.LoadLocationsSuccessAction(locations)))
+        tap(locations => (new LocationActions.LoadLocationsSuccessAction(locations)))
+        // map(locations => (new LocationActions.LoadLocationsSuccessAction(locations)))
       )
     )
   );

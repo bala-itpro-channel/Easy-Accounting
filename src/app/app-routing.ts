@@ -1,9 +1,10 @@
 import { HomeComponent } from './home/home.component';
 import { NgModule, Injectable } from '@angular/core';
-import { RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, PreloadingStrategy } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { LocationComponent } from './master/location/location.component';
+import { CustomPreloadStrategy } from './custom-preload-strategy';
 
 @Injectable({
     providedIn: 'root'
@@ -28,12 +29,12 @@ export const AppRoutes = [{
     }, {
         path: 'home',
         pathMatch: 'full',
-        component:   LocationComponent,
-        // canActivate: [AuthGuard]
+        component:   HomeComponent
     }, {
         path: 'master',
         loadChildren: () => import('./master/master.module').then(m => m.MasterModule),
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: { preload: true, delay: 6000 }
     }, {
         path: '',
         pathMatch: 'full',
@@ -46,9 +47,17 @@ export const AppRoutes = [{
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(AppRoutes)
+        RouterModule.forRoot(
+            AppRoutes,
+            {
+              enableTracing: true,
+              preloadingStrategy: CustomPreloadStrategy
+              // preloadingStrategy: PreloadAllModules
+            }
+        )
     ],
     exports: [RouterModule],
     providers: []
 })
 export class AppRoutingModule { }
+
