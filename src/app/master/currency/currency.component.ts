@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CurrencyComponent implements OnInit {
   currencies: Array<any> = [];
   selectedCurrency: any;
-  visible: any = true;
+  // visible: any = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,

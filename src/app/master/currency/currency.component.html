@@ -1,35 +1,39 @@
 <div class="add_box" (click)="addCurrency()"><i class="material-icons plus">add_box</i></div>
-<div *ngIf="visible">
-  <p-dataTable [value]="currencies" [paginator]="true" [rows]="15" selectionMode="single" 
-  [pageLinks]="1" [rowsPerPageOptions]="[5, 10, 15]" [responsive]="true" 
-  [immutable]="false"
-  (onRowSelect)="onRowSelect($event)" [(selection)]="selectedCurrency" #currTable>
-  <p-header>Currency List</p-header>
-  <p-column field="id" header="Id" [sortable]="true" [filter]="true">
-      <ng-template let-rowData="rowData" pTemplate type="body">
-          <div class='basediv'>
-            {{rowData.id}}
-          </div>
-        </ng-template>
-  </p-column>
-  <p-column field="code" header="Currency Code" [sortable]="true" [filter]="true"></p-column>
-  <p-column field="name" header="Currency Name" [sortable]="true" [filter]="true"></p-column>
-  <p-column field="base" header="Base Currency" [sortable]="true" [filter]="true">
-      <ng-template let-rowData="rowData" pTemplate type="body">
-        <div class='basediv'>
+<div *ngIf="currencies && currencies.length">
+  <p-table [value]="currencies">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th [pSortableColumn]="'code'">
+          Currency Code 
+          <p-sortIcon 
+            [field]="'code'" ariaLabel="Activate to sort" 
+            ariaLabelDesc="Activate to sort in descending order" 
+            ariaLabelAsc="Activate to sort in ascending order">
+          </p-sortIcon>
+        </th>
+        <th>Currency Name</th>
+        <th>Base Currency</th>
+        <th>Delete</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-currency>
+      <tr>
+        <td>{{currency.id}}</td>
+        <td>{{currency.code}}</td>
+        <td>{{currency.name}}</td>
+        <td>
           <mat-slide-toggle
             [color]="'blue'"
             [disabled]="true"
-            [(ngModel)]="rowData.base">
+            [(ngModel)]="currency.base">
           </mat-slide-toggle>
-        </div>
-      </ng-template>
-  </p-column>
-  <p-column>
-    <ng-template let-rowData="rowData" pTemplate type="body">
-      <div (click)="deleteItem($event, rowData)" class="delete"> <i class="material-icons">delete_outline</i> </div>
+        </td>
+        <td>
+          <div (click)="deleteItem($event, currency)" class="delete"> <i class="material-icons">delete_outline</i> </div>
+        </td>
+      </tr>
     </ng-template>
-  </p-column>
-  </p-dataTable>  
+  </p-table>
 </div>
 
