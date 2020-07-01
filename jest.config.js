@@ -10,9 +10,6 @@ module.exports = {
       '**/+(*.)+(spec).+(ts|js)?(x)'
     ],
     moduleFileExtensions: [ 'ts', 'js', 'html', 'json' ],
-    // moduleNameMapper: {
-    //   '@oneview-common/(.*)': '<rootDir>/@oneview-common/$1'
-    // },
     transformIgnorePatterns: [
       'node_modules/(?!@ngrx)'
     ],
@@ -26,8 +23,7 @@ module.exports = {
     ],
     coverageDirectory: './reports/coverage',
     collectCoverageFrom: [
-      'src/app/**/*.(component|service|pipe|directive).ts',
-      '!**/analytics/**/*'
+      'src/app/**/*.(component|service|pipe|directive).ts'
     ],
     coverageThreshold: {
       'global': {
