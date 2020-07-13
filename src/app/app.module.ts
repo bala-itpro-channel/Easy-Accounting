@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppService } from './app.service';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { fakeMasterBackendProvider } from './master/master-fake.service';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material-module';
@@ -22,6 +22,13 @@ import { LocationReducer } from './reducers/location-reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { LocationEffects } from './effects/location-effect';
 import { CustomPreloadStrategy } from './custom-preload-strategy';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,10 +50,20 @@ import { CustomPreloadStrategy } from './custom-preload-strategy';
     EffectsModule.forRoot([LocationEffects]),
     SharedModule,
     AppRoutingModule, // Router module
+    TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
+    })
   ],
   exports: [
   ],
-  providers: [AppService, fakeMasterBackendProvider],
+  providers: [
+    AppService,
+    fakeMasterBackendProvider
+  ],
   bootstrap: [AppComponent],
   entryComponents: []
 })
