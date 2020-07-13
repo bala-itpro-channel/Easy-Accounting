@@ -37,13 +37,14 @@ In Angular we used most of the best features such as
 
 <ul>
   <li>Routers, Guards and Resolvers</li>
+  <li>Multilingual feature using Ngx-translate</li>
   <li>Angular http Interceptor - HttpInterceptor</li>
   <li>Services (singleton)</li>
   <li>Organized Modules based on app feature</li>
-  <li>Custom pipes and directives</li>
+  <li>Custom pipes and directives</li>  
   <li>Angular Material controls such as Textbox, buttons and Modal</li>
   <li>primeng, primeng icons</li>
-  <li>Unit test with code coverage using Jasmine and Karma</li>
+  <li>Unit test with code coverage using Jest</li>
 </ul>
 
 # App Screenshots
