@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
 import { Observable, timer, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';

@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { RouterModule } from '@angular/router';
 
 class MockCurrencyService {
-  private mockCurrencyList: any[]; 
+  private mockCurrencyList: any[];
   constructor() {
     this.mockCurrencyList = [
       {
@@ -27,8 +27,8 @@ class MockCurrencyService {
         base: false
       }
     ];
-  } 
-  
+  }
+
   getCurrencies = () => {
     return of(this.mockCurrencyList);
   }
@@ -36,7 +36,7 @@ class MockCurrencyService {
   getCurrency = (currencyId: number) => {
     const currency = this.mockCurrencyList.find((c) => {
       return c.id === currencyId;
-    })
+    });
     return of(currency);
   }
 
@@ -62,7 +62,7 @@ describe('CurrencyService', () => {
       providers: [
         {provide: CurrencyService, useClass: MockCurrencyService}
       ]
-    })
+    });
   });
 
   it('should be created', () => {
@@ -74,18 +74,18 @@ describe('CurrencyService', () => {
     const service: CurrencyService = TestBed.get(CurrencyService);
     service.getCurrencies().subscribe(data => {
       expect(data.length).toEqual(3);
-    })
+    });
   });
 
   it('should find and return a currency', () => {
-    const currencyId: number = 1;
+    const currencyId = 1;
     const service: CurrencyService = TestBed.get(CurrencyService);
     service.getCurrency(currencyId).subscribe(data => {
       expect(data.length).toEqual(undefined);
       expect(data.code).toEqual('USD');
       expect(data.name).toEqual('US Dollar');
       expect(data.base).toEqual(true);
-    })
+    });
   });
 
   it('should create currency', () => {

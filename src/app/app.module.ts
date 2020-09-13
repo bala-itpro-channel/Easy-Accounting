@@ -6,7 +6,7 @@ import { AppRoutes, AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 // import { DataTableModule } from 'primeng/primeng';
-import { TableModule } from "primeng/table";
+import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppService } from './app.service';
 import { RouterModule, PreloadAllModules } from '@angular/router';
@@ -24,6 +24,7 @@ import { LocationEffects } from './effects/location-effect';
 import { CustomPreloadStrategy } from './custom-preload-strategy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Title }  from '@angular/platform-browser';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     MaterialModule,
     StoreModule.forRoot({locations: LocationReducer}),
-    EffectsModule.forRoot([LocationEffects]),
+    // EffectsModule.forRoot([LocationEffects]),
     SharedModule,
     AppRoutingModule, // Router module
     TranslateModule.forRoot({
@@ -62,7 +63,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     AppService,
-    fakeMasterBackendProvider
+    fakeMasterBackendProvider,
+    Title
   ],
   bootstrap: [AppComponent],
   entryComponents: []

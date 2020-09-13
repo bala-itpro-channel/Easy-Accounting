@@ -19,7 +19,7 @@ export class AuthResolverService implements Resolve<any> {
     // const userName = route.params['userName'];
     // const url = `https://some-end-points.com/validate/${userName}`;
     // return this.http.get(url);
-    const isValidUser: boolean = localStorage.getItem('authenticated').toLowerCase() == 'true' ? true : false; 
+    const isValidUser: boolean = localStorage.getItem('authenticated').toLowerCase() == 'true' ? true : false;
     return of( isValidUser );
   }
 

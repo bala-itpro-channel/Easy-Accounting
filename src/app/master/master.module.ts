@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CurrencyComponent } from './currency/currency.component';
 import { LocationComponent } from './location/location.component';
 // import { DataTableModule } from 'primeng/primeng';
-import { TableModule } from "primeng/table";
+import { TableModule } from 'primeng/table';
 import { MaterialModule } from '../material-module';
 import { CurrencyDialogComponent } from './currency/dialog/currency-dialog/currency-dialog.component';
 import { FormsModule } from '@angular/forms';

@@ -15,11 +15,11 @@ export class DeleteDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  onNoClick(): void{
+  onNoClick(): void {
     this.dialogRef.close(false);
   }
 
-  onYesClick(): void{
+  onYesClick(): void {
     this.dialogRef.close(true);
   }
 

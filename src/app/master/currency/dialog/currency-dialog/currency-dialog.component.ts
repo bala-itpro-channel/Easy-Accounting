@@ -7,15 +7,15 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 })
 export class CurrencyDialogComponent implements OnInit {
 
-  isAddOperation: boolean = false;
+  isAddOperation = false;
   currency: any = {
     id: 0,
     code: '',
     name: '',
     base: false
-  }
+  };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     console.log('constructor');
   }
 
@@ -30,7 +30,7 @@ export class CurrencyDialogComponent implements OnInit {
     //     base: false
     //   }
     // }
-  
+
     console.log('constructor 1');
   }
 
