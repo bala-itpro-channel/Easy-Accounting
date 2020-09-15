@@ -18,13 +18,11 @@ import { MaterialModule } from './material-module';
 import { CommonModule } from '@angular/common';
 import { LocationComponent } from './master/location/location.component';
 import { StoreModule } from '@ngrx/store';
-import { LocationReducer } from './reducers/location-reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { LocationEffects } from './effects/location-effect';
 import { CustomPreloadStrategy } from './custom-preload-strategy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { Title }  from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    StoreModule.forRoot({locations: LocationReducer}),
+    StoreModule.forRoot( {} ),
     // EffectsModule.forRoot([LocationEffects]),
     SharedModule,
     AppRoutingModule, // Router module

@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { MasterComponent } from './master.component';
 import { MasterRoutingModule } from './master.router';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { locationReducer } from './reducers/location-reducers';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { CommonModule } from '@angular/common';
     TableModule,
     MaterialModule,
     FormsModule,
-    MasterRoutingModule
+    MasterRoutingModule,
+    StoreModule.forFeature('locations', locationReducer)
   ],
   providers: [
   ],
